@@ -1,0 +1,66 @@
+﻿<table class="table table-sm table-striped">
+  <tr>
+    <th colspan="2" class="bg-info">Details of Employee - ID: {{ employee?.employeeID || " No Employee selected!" }}</th>
+  </tr>
+  <tbody>
+    <tr>
+      <th>Full Name</th>
+      <td>
+        <em>{{ employee?.titleOfCourtesy }}</em> {{ employee?.firstName }}
+        {{ employee?.lastName }}
+      </td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <td>{{ employee?.title }}</td>
+    </tr>
+    <tr>
+      <th>DOB</th>
+      <td>{{ employee?.birthDate | date: 'd MMM, y' }}</td>
+    </tr>
+    <tr>
+      <th>Hire date</th>
+      <td>{{ employee?.hireDate | date: 'd MMM, y' }}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{{ employee?.address }}</td>
+    </tr>
+    <tr>
+      <th>City</th>
+      <td>{{ employee?.city }}</td>
+    </tr>
+    <tr>
+      <th>Region</th>
+      <td>{{ employee?.region }}</td>
+    </tr>
+    <tr>
+      <th>Postal Code</th>
+      <td>{{ employee?.postalCode }}</td>
+    </tr>
+    <tr>
+      <th>Country</th>
+      <td>{{ employee?.country }}</td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td>{{ employee?.homePhone }}</td>
+    </tr>
+    <tr>
+      <th>Extention</th>
+      <td>{{ employee?.extension }}</td>
+    </tr>
+    <tr>
+      <th>Notes</th>
+      <td>{{ employee?.notes }}</td>
+    </tr>
+    <tr>
+      <th>Reports To</th>
+      <ng-container *ngFor="let emp of employees">
+        <ng-container *ngIf="emp.employeeID === employee.reportsTo">
+          <td>{{ emp.firstName }} {{ emp.lastName }}</td>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

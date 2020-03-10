@@ -1,0 +1,104 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinApp"
+    xmlns:nw="using:dasixtytwo.lib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    x:Class="WinApp.EmployeesPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Grid>
+    <ListView x:Name="ForegroundElement">
+      <ListView.Header>
+        <Grid Padding="20" 
+            Background="{ThemeResource SystemControlAcrylicElementBrush}">
+          <TextBlock Style="{StaticResource TitleTextBlockStyle}" 
+                     FontSize="24" VerticalAlignment="Center" 
+                     Margin="12,0" Text="Northwind: Employees"/>
+        </Grid>
+      </ListView.Header>
+    </ListView>
+   
+    <Custom:DataGrid x:Name="dataGrid" Margin="5,73,5,10"
+                     AutoGenerateColumns="False"
+                     AlternatingRowBackground="LightGray"
+                     ItemsSource="{x:Bind ViewModel.Employees}">
+      <Custom:DataGrid.Columns>
+        <!-- Employee Column -->
+        <Custom:DataGridTemplateColumn Header="Name">
+          <Custom:DataGridTemplateColumn.CellTemplate>
+            <DataTemplate x:DataType="nw:Employee">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Padding="5,0,5,0"
+                            Text="{x:Bind TitleOfCourtesy}"/>
+                <TextBlock Padding="5,0,5,0"
+                            Text="{x:Bind FirstName}"/>
+                <TextBlock Text="{x:Bind LastName}"/>
+              </StackPanel>
+            </DataTemplate>
+          </Custom:DataGridTemplateColumn.CellTemplate>
+        </Custom:DataGridTemplateColumn>
+        <!-- Position Column -->
+        <Custom:DataGridTemplateColumn Header="Position">
+          <Custom:DataGridTemplateColumn.CellTemplate>
+            <DataTemplate x:DataType="nw:Employee">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Padding="5,0,5,0"
+                            Text="{x:Bind TitleOfCourtesy}"/>
+              </StackPanel>
+            </DataTemplate>
+          </Custom:DataGridTemplateColumn.CellTemplate>
+        </Custom:DataGridTemplateColumn>
+        <!-- HireDate Column -->
+        
+        <!-- Address Column -->
+        <Custom:DataGridTemplateColumn Header="Address">
+          <Custom:DataGridTemplateColumn.CellTemplate>
+            <DataTemplate x:DataType="nw:Employee">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Padding="5,0,5,0"
+                            Text="{x:Bind Address}"/>
+              </StackPanel>
+            </DataTemplate>
+          </Custom:DataGridTemplateColumn.CellTemplate>
+        </Custom:DataGridTemplateColumn>
+        <!-- City Column -->
+        <Custom:DataGridTemplateColumn Header="City">
+          <Custom:DataGridTemplateColumn.CellTemplate>
+            <DataTemplate x:DataType="nw:Employee">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Padding="5,0,5,0"
+                            Text="{x:Bind City}"/>
+              </StackPanel>
+            </DataTemplate>
+          </Custom:DataGridTemplateColumn.CellTemplate>
+        </Custom:DataGridTemplateColumn>
+        <!-- PostalCode Column -->
+        <Custom:DataGridTemplateColumn Header="Post Code">
+          <Custom:DataGridTemplateColumn.CellTemplate>
+            <DataTemplate x:DataType="nw:Employee">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Padding="5,0,5,0"
+                            Text="{x:Bind PostalCode}"/>
+              </StackPanel>
+            </DataTemplate>
+          </Custom:DataGridTemplateColumn.CellTemplate>
+        </Custom:DataGridTemplateColumn>
+        <!-- Phone Column -->
+        <Custom:DataGridTemplateColumn Header="Phone">
+          <Custom:DataGridTemplateColumn.CellTemplate>
+            <DataTemplate x:DataType="nw:Employee">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Padding="5,0,5,0"
+                            Text="{x:Bind HomePhone}"/>
+              </StackPanel>
+            </DataTemplate>
+          </Custom:DataGridTemplateColumn.CellTemplate>
+        </Custom:DataGridTemplateColumn>
+      </Custom:DataGrid.Columns>
+    </Custom:DataGrid>
+  </Grid>
+</Page>

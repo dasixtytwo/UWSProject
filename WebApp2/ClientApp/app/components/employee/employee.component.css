@@ -1,0 +1,14 @@
+﻿.mtb-1 {
+  margin: 10px 0;
+}
+
+.table-responsive {
+  min-height: .01%;
+  overflow-x: hidden;
+}
+
+@media only screen and (max-width: 780px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+}

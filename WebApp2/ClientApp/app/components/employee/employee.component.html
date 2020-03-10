@@ -1,0 +1,85 @@
+﻿<h1>NorthWind Employee</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+<div class="col-md-12">
+  <div class="table-responsive">
+    <table *ngIf="tableMode; else create; employees" class="table table-sm table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Employee</th>
+          <th>Title</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of employees">
+          <ng-template 
+            [ngIf]="employee?.employeeID != e.employeeID" 
+            [ngIfElse]="edit">
+            <td>
+              {{ e.employeeID }}
+            </td>
+            <td>
+              <em>{{ e.titleOfCourtesy }}</em> {{ e.firstName }}
+              {{ e.lastName }}
+            </td>
+            <td>{{ e.title }}</td>
+            <td>
+              <button class="btn btn-info btn-sm ml-1"
+                      (click)="selectEmployee(e.employeeID)">
+                Details
+              </button>
+              <button class="btn btn-danger btn-sm ml-1"
+                      (click)="deleteEmployee(e.employeeID)">
+                Delete
+              </button>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" class="text-left p-3">
+            <button class="btn btn-primary btn-sm"
+                    (click)="enable($event); clearEmployee(); tableMode = false">
+              Create
+            </button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<ng-template #edit>
+  <td colspan="4" class="bg-light border open p-3">
+    <form [formGroup]="employeeForm">
+      <employee-editor [isDisabled]="isDisabled" [employeeForm]="employeeForm"></employee-editor>
+      <div class="text-right pt-3 mtb-1">
+        <button class="btn btn-info ml-1"
+                (click)="saveEmployee()"
+                [disabled]="isDisabled">
+          Save
+        </button>
+        <button class="btn btn-info ml-1" (click)="enable($event)">Update</button>
+        <button class="btn btn-info ml-1" (click)="clearEmployee()">Close</button>
+      </div>
+    </form>
+  </td>
+</ng-template>
+
+<ng-template #create>
+  <div class="m-2">
+    <form [formGroup]="employeeForm">
+      <employee-editor [isDisabled]="isDisabled" [employeeForm]="employeeForm"></employee-editor>
+      <div class="mtb-1">
+        <button class="btn btn-info ml-1" (click)="saveEmployee()" [disabled]="!employeeForm.valid">Save</button>
+        <button class="btn btn-info ml-1" (click)="clearEmployee()">Close</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,173 @@
+<div class="row mt-1">
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-2">
+    <fieldset [disabled]="isDisabled">
+      <label>Title</label>
+      <input class="form-control" id="titleOfCourtesy" name="titleOfCourtesy" [formControlName]="'titleOfCourtesy'" [(ngModel)]="employee.titleOfCourtesy" />
+      <div *ngIf="!employeeForm.controls.titleOfCourtesy.valid && (employeeForm.controls.titleOfCourtesy.dirty || employeeForm.controls.titleOfCourtesy.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.titleOfCourtesy.errors.required">
+          Title is required.
+        </div>
+        <div *ngIf="employeeForm.controls.titleOfCourtesy.errors.minlength">
+          Title must be at least 2 characters long.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-5">
+    <fieldset [disabled]="isDisabled">
+      <label>First Name</label>
+      <input class="form-control" id="firstName" name="firstName" [formControlName]="'firstName'" [(ngModel)]="employee.firstName" />
+      <div *ngIf="!employeeForm.controls.firstName.valid && (employeeForm.controls.firstName.dirty || employeeForm.controls.firstName.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.firstName.errors.required">
+          First Name is required.
+        </div>
+        <div *ngIf="employeeForm.controls.firstName.errors.minlength">
+          First Name must be at least 3 characters long.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-5">
+    <fieldset [disabled]="isDisabled">
+      <label>Last Name</label>
+      <input class="form-control" id="lastName" name="lastName" [formControlName]="'lastName'" [(ngModel)]="employee.lastName" [disabled]="isDisabled" />
+      <div *ngIf="!employeeForm.controls.lastName.valid && (employeeForm.controls.lastName.dirty || employeeForm.controls.lastName.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.lastName.errors.required">
+          Last Name is required.
+        </div>
+        <div *ngIf="employeeForm.controls.lastName.errors.minlength">
+          Last name must be at least 3 characters long.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-12 mt-1">
+    <fieldset [disabled]="isDisabled">
+      <label>Position</label>
+      <input id="title" name="title" [formControlName]="'title'" class="form-control" [(ngModel)]="employee.title" />
+      <div *ngIf="!employeeForm.controls.title.valid && (employeeForm.controls.title.dirty || employeeForm.controls.title.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.title.errors.required">
+          Position is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+<div class="row mt-1">
+  <div class="form-grou-sm col-md-5">
+    <label>DOB</label>
+    <input type="date"
+            class="form-control"
+            [ngModel]="employee.birthDate | date: 'yyyy-MM-dd'"
+            (ngModelChange)="employee.birthDate = $event"
+            [disabled]="isDisabled" />
+  </div>
+  <div class="form-group-sm col-md-offset-2 col-md-5">
+    <label>Hire Date</label>
+    <input type="date" class="form-control" [ngModel]="employee.hireDate | date: 'yyyy-MM-dd'" (ngModelChange)="employee.hireDate = $event" [disabled]="isDisabled" />
+  </div>
+</div>
+
+<div class="row mt-1">
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-5">
+    <fieldset [disabled]="isDisabled">
+      <label>Address</label>
+      <input id="address" name="address" [formControlName]="'address'" class="form-control" [(ngModel)]="employee.address" />
+      <div *ngIf="!employeeForm.controls.city.valid && (employeeForm.controls.city.dirty || employeeForm.controls.city.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.city.errors.required">
+          Address is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-3">
+    <fieldset [disabled]="isDisabled">
+      <label>City</label>
+      <input id="city" name="city" [formControlName]="'city'" class="form-control" [(ngModel)]="employee.city" />
+      <div *ngIf="!employeeForm.controls.city.valid && (employeeForm.controls.city.dirty || employeeForm.controls.city.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.city.errors.required">
+          City is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+ 
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-4">
+    <fieldset [disabled]="isDisabled">
+      <label>Postal Code</label>
+      <input id="postalCode" name="postalCode" [formControlName]="'postalCode'" class="form-control" [(ngModel)]="employee.postalCode" />
+      <div *ngIf="!employeeForm.controls.postalCode.valid && (employeeForm.controls.postalCode.dirty || employeeForm.controls.postalCode.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.postalCode.errors.required">
+          Postal Code is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+<div class="row mt-1">
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-6">
+    <fieldset [disabled]="isDisabled">
+      <label>Region</label>
+      <input id="region" name="region" [formControlName]="'region'" class="form-control" [(ngModel)]="employee.region" />
+      <div *ngIf="!employeeForm.controls.region.valid && (employeeForm.controls.region.dirty || employeeForm.controls.region.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.region.errors.required">
+          Region is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-6">
+    <fieldset [disabled]="isDisabled">
+      <label>Country</label>
+      <input id="country" name="country" [formControlName]="'country'" class="form-control" [(ngModel)]="employee.country" />
+      <div *ngIf="!employeeForm.controls.country.valid && (employeeForm.controls.country.dirty || employeeForm.controls.country.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.country.errors.required">
+          Country is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-12 mt-1">
+    <fieldset [disabled]="isDisabled">
+      <label>Phone</label>
+      <input id="phone" name="phone" [formControlName]="'phone'" class="form-control" [(ngModel)]="employee.homePhone" />
+      <div *ngIf="!employeeForm.controls.phone.valid && (employeeForm.controls.phone.dirty || employeeForm.controls.phone.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.phone.errors.required">
+          Phone is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+<div class="row mt-1">
+  <div class="form-group-sm col-md-12">
+    <label>Notes</label>
+    <textarea class="form-control" [(ngModel)]="employee.notes" [disabled]="isDisabled"></textarea>
+  </div>
+  <div [formGroup]="employeeForm" class="form-group-sm col-md-6 mt-1">
+    <fieldset [disabled]="isDisabled">
+      <label>Extension</label>
+      <input id="extension" name="extension" [formControlName]="'extension'" class="form-control" [(ngModel)]="employee.extension" [disabled]="isDisabled" />
+      <div *ngIf="!employeeForm.controls.extension.valid && (employeeForm.controls.extension.dirty || employeeForm.controls.extension.touched)" class="alert alert-danger">
+        <div *ngIf="employeeForm.controls.extension.errors.required">
+          Extension is required.
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="form-group-sm col-md-6 mt-1">
+    <label>Reports To</label>
+    <select class="form-control" [(ngModel)]="employee.reportsTo" [disabled]="isDisabled">
+      <option *ngFor="let employee of employees" [value]="employee.employeeID">
+        {{employee.firstName}} {{employee.lastName}}
+      </option>
+    </select>
+  </div>
+</div>
